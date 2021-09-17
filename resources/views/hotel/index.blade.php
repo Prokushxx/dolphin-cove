@@ -7,7 +7,7 @@
         <h1>List of Hotels</h1>
         <table>
             <tr>
-                <tr>Hotel Id</tr>
+                <td>Hotel Id</td>
                 <th>Name</th>
                 <th>Modify</th>
             </tr>
