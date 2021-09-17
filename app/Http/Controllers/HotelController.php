@@ -83,9 +83,9 @@ class HotelController extends Controller
             'hotel_name' => 'required|unique:hotels, hotel_name' . $id,
         ]);
 
-        Hotel::create([
-            'hotel_name' => $request->hotel_name,
-        ]);
+        $hotel = Hotel::find($id);
+        $hotel->hotel_name = $request->hotel_name;
+        $hotel->save;
 
         return redirect('hotel.index');
     }
