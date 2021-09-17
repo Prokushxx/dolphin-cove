@@ -205,5 +205,6 @@
     <section class="background">
         
     </section>
+    @yield('content')
 </body>
 </html>
