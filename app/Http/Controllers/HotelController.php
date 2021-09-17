@@ -66,7 +66,8 @@ class HotelController extends Controller
      */
     public function edit($id)
     {
-        return view(route('hotel.edit', $id));
+        $hotel = Hotel::find($id);
+        return view(route('hotel.edit', $hotel));
     }
 
     /**
@@ -82,9 +83,9 @@ class HotelController extends Controller
             'hotel_name' => 'required|unique:hotels, hotel_name' . $id,
         ]);
 
-        Hotel::create([
-            'hotel_name' => $request->hotel_name,
-        ]);
+        $hotel = Hotel::find($id);
+        $hotel->hotel_name = $request->hotel_name;
+        $hotel->save;
 
         return redirect('hotel.index');
     }
