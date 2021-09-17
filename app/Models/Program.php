@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Program extends Model
 {
-    use HasFactory;
-    protected $primaryKey = 'p_id';
+  use HasFactory;
+  protected $primaryKey = 'p_id';
+
+  protected $fillable = [
+    'p_name',
+    'p_costs'
+  ];
 }

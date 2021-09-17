@@ -15,7 +15,7 @@ class ProgramController extends Controller
     public function index()
     {
         $programs = Program::all();
-        return view('program.index', ['programs' => $programs]);
+        return view('program/index', ['programs' => $programs]);
     }
 
     /**
@@ -45,7 +45,7 @@ class ProgramController extends Controller
             'p_costs' => $request->p_costs,
         ]);
 
-        return redirect('program.index');
+        return redirect('program/index');
     }
 
     /**
@@ -89,7 +89,7 @@ class ProgramController extends Controller
         $program->p_costs = $request->p_costs;
         $program->save;
 
-        return redirect('program.index');
+        return redirect('program/index');
     }
 
     /**
