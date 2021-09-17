@@ -45,7 +45,7 @@ class ProgramController extends Controller
             'p_costs' => $request->p_costs,
         ]);
 
-        return redirect('program.index');
+        return redirect('program/index');
     }
 
     /**
