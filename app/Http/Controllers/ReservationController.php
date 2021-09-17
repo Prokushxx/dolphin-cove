@@ -79,7 +79,7 @@ class ReservationController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'company_name' => 'required|unique:reservations,company_name'
+            'company_name' => 'required|unique:reservations,company_name' . $id,
         ]);
 
         Reservation::create([

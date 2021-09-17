@@ -18,14 +18,6 @@
                 <th>Modify</th>
             </tr>
             @foreach ($hotels as $hotel)
-<<<<<<< HEAD
-                <td>
-                    {{ $hotel->hotel_id }}
-                </td>
-                <td>
-                    {{ $hotel->hotel_name }}
-                </td>
-=======
                 <tr>
                     <td>{{ $hotel->hotel_name }}</td>
                     <td>
@@ -40,7 +32,6 @@
                         </form>
                     </td>
                 </tr>
->>>>>>> 2270ec20581842cf6cff3f08dd195492662a517c
             @endforeach
         </table>
     </div>
