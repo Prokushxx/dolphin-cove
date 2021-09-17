@@ -11,11 +11,17 @@
         <h1>List of Hotels</h1>
         <table>
             <tr>
+                <tr>Hotel Id</tr>
                 <th>Name</th>
                 <th>Modify</th>
             </tr>
-            @foreach ($collection as $item)
-                
+            @foreach ($hotels as $hotel)
+                <td>
+                    {{ $hotel->hotel_id }}
+                </td>
+                <td>
+                    {{ $hotel->hotel_name }}
+                </td>
             @endforeach
         </table>
     </div>
