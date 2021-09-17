@@ -26,13 +26,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function () {
     Route::resource('hotel', HotelController::class);
     Route::resource('program', ProgramController::class);
     Route::resource('reservation', ReservationController::class);
     Route::resource('schedule', ScheduleController::class);
     Route::resource('booking', BookingController::class);
-// });
+});
 
 
 
