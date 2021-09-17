@@ -13,11 +13,11 @@
         <th>
           Company Name
         </th>
-      {{-- @foreach ($reservation as $reservation )
+      @foreach ($reservations as $reservation )
        <tr>
-         <td></td>
+         <td>{{ $reservation->company_name }}</td>
        </tr>
-      @endforeach --}}
+      @endforeach
     </table>
   </form>
 </body>

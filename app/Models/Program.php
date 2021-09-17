@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Program extends Model
 {
+
   use HasFactory;
   protected $primaryKey = 'p_id';
 
@@ -14,4 +15,5 @@ class Program extends Model
     'p_name',
     'p_costs'
   ];
+
 }

@@ -1,26 +1,29 @@
 @extends('layouts.navbar')
-
-@section('content')
-  
-<h1>View Programs</h1>
-
-<table>
-<tr>
-  <th>Program name</th>
-  <th>Program prie</th>
-</tr>
-
-@foreach ($programs as $prog)
-  
-<tr>
-  <td>{{ $prog->p_name }}</td>
-  <td>{{ $prog->p_costs }}</td>
-  <td><a href="{{ route('program.edit',$programs->p_id) }}"><button>EDIT</button></a></td>
-  {{-- @method('delete') --}}
-  <td><a href="{{ route('program.destroy',$programs->p_id) }}"><button>Delete</button></a></td>
-</tr>
-
-@endforeach
-</table>
-
+    @section('content')
+    <div>
+        <h1>List of Programns</h1>
+        <table>
+            <tr>
+                <tr>Program Id</tr>
+                <th>Name</th>
+                <th>Modify</th>
+            </tr>
+            @foreach ($programs as $program)
+                <tr>
+                    <td>{{ $program->p_name }}</td>
+                    <td>
+                        <a href="{{ route('program.edit', $program->p_id) }}">edit</a>
+                        <form class="" action=" {{ route('program.destroy', $program->program_id) }}" method="post"
+                            onsubmit="return confirm('Are you sure you want to delete {{ $program->p_name }} program?');">
+                            @csrf
+                            @method('DELETE')
+                            <button class="">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </table>
+    </div>
 @endsection

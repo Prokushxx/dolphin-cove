@@ -81,7 +81,7 @@ class ProgramController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'p_name' => 'required|unique:programs,p_name' . $id,
+            'p_name' => 'required|unique:programs,p_name,' . $id,
         ]);
 
         $program = Program::find($id);
