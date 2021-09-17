@@ -14,8 +14,8 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $Schedule = Schedule::all();
-        return view('Schedule.index', ['Schedule' => $Schedule]);
+        $schedule = Schedule::all();
+        return view('schedule.index', ['schedule' => $schedule]);
     }
 
     /**
@@ -25,7 +25,7 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        return view('Schedule.create');
+        return view('schedule.create');
     }
 
     /**
@@ -37,14 +37,14 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-                    'Schedule_name' => 'required|unique:Schedule,Schedule_name'
+                    'schedule_name' => 'required|unique:schedule,schedule_name'
                 ]);
 
                 Schedule::create([
-                    'Schedule_name' => $request->Schedule_name,
+                    'schedule_name' => $request->schedule_name,
                 ]);
 
-                return redirect('Schedule.index');
+                return redirect('schedule.index');
     }
 
     /**
@@ -55,7 +55,7 @@ class ScheduleController extends Controller
      */
     public function show($id)
     {
-        return view('Schedule.show');
+        return view('schedule.show');
     }
 
     /**
@@ -66,8 +66,8 @@ class ScheduleController extends Controller
      */
     public function edit($id)
     {
-        $Schedule = Schedule::find($id);
-        return view(route('Schedule.edit', $Schedule));
+        $schedule = Schedule::find($id);
+        return view(route('schedule.edit', $schedule));
     }
 
     /**
@@ -80,14 +80,14 @@ class ScheduleController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-                    'Schedule_name' => 'required|unique:Schedule, Schedule_name' . $id,
+                    'schedule_name' => 'required|unique:schedule, schedule_name' . $id,
                 ]);
 
                Schedule::create([
-                    'Schedule_name' => $request->Schedule_name,
+                    'schedule_name' => $request->schedule_name,
                 ]);
 
-                return redirect('Schedule.index');
+                return redirect('schedule.index');
     }
 
     /**
