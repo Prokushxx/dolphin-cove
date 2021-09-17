@@ -36,8 +36,11 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'p_name' => 'required|unique:programs,p_name'
+        $val=$request->validate([
+            'p_name' => 'unique:programs,p_name',
+      
+        ],[
+          'p_name.unique'=>'*This program already exists'
         ]);
 
         Program::create([
@@ -45,7 +48,14 @@ class ProgramController extends Controller
             'p_costs' => $request->p_costs,
         ]);
 
-        return redirect('program.index');
+        if ($val){
+          $programs = Program::all();
+          return view('program.index', ['programs' => $programs]);
+        }
+
+        else {
+          return redirect()->back()->withErrors($val);
+        }
     }
 
     /**
@@ -67,6 +77,7 @@ class ProgramController extends Controller
      */
     public function edit($id)
     {
+      
         $program = Program::find($id);
         return view('program.edit', ['program' => $program]);
     }
@@ -81,15 +92,17 @@ class ProgramController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'p_name' => 'required|unique:programs,p_name,' . $id,
+            'p_name' => 'required|unique:programs,p_name,' . $id . ',p_id'
         ]);
 
         $program = Program::find($id);
         $program->p_name = $request->p_name;
         $program->p_costs = $request->p_costs;
-        $program->save;
+        $program->save();
 
-        return redirect('program.index');
+        // dd($request->)
+        $programs = Program::all();
+        return view('program.index', ['programs' => $programs]);
     }
 
     /**
