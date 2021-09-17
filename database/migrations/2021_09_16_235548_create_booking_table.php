@@ -16,10 +16,10 @@ class CreateBookingTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id('booking_id');
             $table->foreignId('user_id')->constrained('users','user_id');
-            $table->foreignId('company_id')->constrained('reservation','company_id');
+            $table->foreignId('company_id')->constrained('reservations','company_id');
             $table->foreignId('hotel_id')->constrained('hotels','hotel_id');
             $table->foreignId('p_id')->constrained('programs','p_id');
-            $table->foreignId("schedule_id")->constrained('schedule','schedule_id');
+            $table->foreignId("schedule_id")->constrained('schedules','schedule_id');
             $table->date('current_date');
             $table->string('status');
             $table->string('payment_method');
