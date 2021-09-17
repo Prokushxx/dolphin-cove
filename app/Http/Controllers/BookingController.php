@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
+use App\Models\Hotel;
+use App\Models\Reservation;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
@@ -13,7 +18,8 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        $bookings = Booking::all();
+        return view('booking.index', ['bookings' => $bookings]);
     }
 
     /**
@@ -23,7 +29,15 @@ class BookingController extends Controller
      */
     public function create()
     {
-        
+        $reservations = Reservation::all();
+        $hotels = Hotel::all();
+
+        $schedules = DB::table('schedules')
+            ->join('programs', 'schedules.program_id', '=', 'programs.p_id')
+            ->select()
+            ->get();
+
+        return view('booking.create', compact('reservations', 'schedules', 'hotels'));
     }
 
     /**
@@ -34,7 +48,6 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**

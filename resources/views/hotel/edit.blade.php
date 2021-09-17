@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.navbar')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+@section('content')
 
-<body>
+<main>
     <div>
         <h1>Edit Hotel</h1>
         <form action="{{ route('hotel.update', $hotel->hotel_id) }}" method="post">
@@ -24,6 +18,7 @@
             </div>
         </form>
     </div>
-</body>
+</main>
 
-</html>
+
+@endsection

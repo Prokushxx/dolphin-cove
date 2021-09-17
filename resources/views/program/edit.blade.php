@@ -24,6 +24,13 @@
             </div>
         </form>
     </div>
+<<<<<<< HEAD
 </body>
 
 </html>
+=======
+</main>
+
+
+@endsection
+>>>>>>> e64651ed67a794c724eb8d2759dc6e08e4466e60
