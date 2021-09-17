@@ -6,7 +6,7 @@
 
   @csrf
 <input type="email" name="email" placeholder="Email" value="{{ old('email') }}"><br>    
-<input type="number" name="phone" placeholder="Phone Number" {{ old('phone') }}><br>   
+<input type="number" name="phone" placeholder="Phone Number" value={{ "old('phone')" }} }}><br>   
 <Label for="book_date">Booking Date</Label><br>   
 <input type="date" name="book_date" placeholder="Booking Date"><br>   
 <Label>HOTEL</Label><br>
