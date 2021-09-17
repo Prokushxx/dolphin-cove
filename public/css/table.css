@@ -1,0 +1,26 @@
+
+div h1
+{
+   text-transform: uppercase;
+   margin-bottom: 15px;
+   padding: 10px 20px;
+}
+div table
+{
+   width: 100%;
+   
+}
+div table th
+{
+   background-color: rgb(147, 174, 255);
+}
+div table,th,td
+{
+   border-collapse: collapse;
+   padding: 10px 15px;
+   border: 2px solid black;
+}
+
+td:nth-child(even) {
+  background-color: rgba(150, 212, 212, 0.4);
+}
