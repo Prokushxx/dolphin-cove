@@ -66,7 +66,8 @@ class HotelController extends Controller
      */
     public function edit($id)
     {
-        return view(route('hotel.edit', $id));
+        $hotel = Hotel::find($id);
+        return view(route('hotel.edit', $hotel));
     }
 
     /**
