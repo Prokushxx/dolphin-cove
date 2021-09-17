@@ -45,7 +45,7 @@ class ProgramController extends Controller
             'p_costs' => $request->p_costs,
         ]);
 
-        return redirect('program.index');
+        return redirect('program/index');
     }
 
     /**
@@ -68,7 +68,7 @@ class ProgramController extends Controller
     public function edit($id)
     {
         $program = Program::find($id);
-        return view(route('program.edit', $program));
+        return view('program.edit', ['program' => $program]);
     }
 
     /**
@@ -81,7 +81,7 @@ class ProgramController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'p_name' => 'required|unique:programs,p_name' . $id,
+            'p_name' => 'required|unique:programs,p_name,' . $id,
         ]);
 
         $program = Program::find($id);
@@ -101,5 +101,6 @@ class ProgramController extends Controller
     public function destroy($id)
     {
         Program::destroy($id);
+        redirect(route('program.index'));
     }
 }

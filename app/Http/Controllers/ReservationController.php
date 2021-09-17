@@ -79,12 +79,11 @@ class ReservationController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'company_name' => 'required|unique:reservations,company_name' . $id,
+            'company_name' => 'required|unique:reservations,company_name,' . $id,
         ]);
 
-        Reservation::create([
-            'comapany_name' => $request->company_name
-        ]);
+        $reservation = Reservation::find($id);
+        $reservation->company_name = $request->company_name;
 
         return redirect('reservation.index');
     }

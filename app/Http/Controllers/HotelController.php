@@ -80,7 +80,7 @@ class HotelController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'hotel_name' => 'required|unique:hotels, hotel_name' . $id,
+            'hotel_name' => 'required|unique:hotels, hotel_name,' . $id,
         ]);
 
         $hotel = Hotel::find($id);

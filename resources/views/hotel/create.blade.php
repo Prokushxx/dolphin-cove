@@ -1,21 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.navbar')
 
 @section('content')
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-
-<body>
+<main>
     <div>
         <h1>Enter Hotel Name</h1>
-        <form action="{{ route('hotel.create') }}" method="post">
+        <form action="{{ route('hotel.store') }}" method="post">
             @csrf
             <div>
                 <input type="text" name="hotel_name">
@@ -25,8 +15,6 @@
             </div>
         </form>
     </div>
-</body>
-
-</html>
+</main>
 
 @endsection

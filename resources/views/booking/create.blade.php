@@ -1,39 +1,40 @@
-@extends('layouts.app')
+@extends('layouts.navbar')
 
 @section('content')
 
-<form action="" method="POST">
+    <form action="{{ route('booking.store') }}" method="POST">
 
-  @csrf
-<input type="email" name="email" placeholder="Email" value="{{ old('email') }}"><br>    
-<input type="number" name="phone" placeholder="Phone Number" value={{ "old('phone')" }}><br>   
-<Label for="book_date">Booking Date</Label><br>   
-<input type="date" name="book_date" placeholder="Booking Date"><br>   
-<Label>HOTEL</Label><br>
-<select name="hotel" id="hotel">
-  <option value="sandals">Sandals</option><br>    
-  <option value="Jamaica Grand">Jamaica Grand</option><br>    
-  <option value="Jamaica Grand">RIU</option><br>    
-  <option value="Jamaica Grand">None</option><br>   
-</select><br>   
-<Label>Program</Label><br>
-<select name="Program" id="">
-  <option value="Scuba">Scuba</option><br>    
-  <option value="Swimming">Swimming</option><br>    
-  <option value="Zip lining">Zip lining</option><br>    
-  <option value="Diving">Diving</option><br>    
-</select><br>   
-<LAbel for="status">Status</LAbel><br>
-<select name="status" id="">   
-  <option value="Pending">Pending</option>   
-  <option value="Paid">Paid</option>
-</select><br>   
-<label for="pay_method">Payment Method</label><br>
-<select name="pay_method" id="">
-  <option value="cash">Cash</option> 
-  <option value="credit">Credit</option> 
-</select><br>   
-<input type="submit" value ="Submit Booking">
-</form>
+        @csrf
+        <input type="email" name="email" placeholder="Enter customer email" value="{{ old('email') }}"><br>
+        <Label>Hotel</Label><br>
+        <select name="company_id" id="company">
+            @foreach ($reservations as $company)
+                <option value="{{ $company->company_id }}">{{ $company->company_name }}</option><br>
+            @endforeach
+        </select><br>
+        <Label>Hotel</Label><br>
+        <select name="hotel_id" id="hotel">
+            @foreach ($hotels as $hotel)
+                <option value="{{ $hotel->hotel_id }}">{{ $hotel->hotel_name }}</option><br>
+            @endforeach
+        </select><br>
+        <Label>Program</Label><br>
+        <select name="schdule_id" id="">
+            @foreach ($schedules as $schedule)
+                <option value="{{ $schedule->schedule_id }}">{{ $schedule->p_name }}</option><br>
+            @endforeach
+        </select><br>
+        <label for="status">Status</label><br>
+        <select name="status" id="">
+            <option value="pending">Pending</option>
+            <option value="paid">Paid</option>
+        </select><br>
+        <label for="pay_method">Payment Method</label><br>
+        <select name="payment_method" id="">
+            <option value="cash">Cash</option>
+            <option value="credit">Credit</option>
+        </select><br>
+        <input type="submit" value="Submit Booking">
+    </form>
 
 @endsection
