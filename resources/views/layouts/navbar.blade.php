@@ -87,75 +87,17 @@
             color: #c0c0c0;
         }
 
-        .nav div.media_button {
-            width: 40px;
-            height: 40px;
-            background-color: transparent;
-            position: absolute;
-            right: 15px;
-            top: 12px;
-            display: none;
-        }
-
-        .nav div.media_button button.main_media_button {
-            width: 100%;
-            height: 100%;
-            background-color: transparent;
-            ;
-            outline: 0;
+        form button {
+            display: inline-block;
+            padding: 8px 12px;
             border: none;
-            cursor: pointer;
+            outline: none;
+            border-radius: 6px;
         }
 
-        .nav div.media_button button.main_media_button span {
-            width: 98%;
-            height: 1px;
-            display: block;
-            background-color: #fff;
-            margin-top: 9px;
-            margin-bottom: 10px;
-        }
-
-        .nav div.media_button button.main_media_button:hover span:nth-of-type(1) {
-            transform: rotateY(180deg);
-            transition: all 0.5s;
-            background-color: #c0c0c0;
-        }
-
-        .nav div.media_button button.main_media_button:hover span:nth-of-type(2) {
-            transform: rotateY(180deg);
-            transition: all 0.4s;
-            background-color: #c0c0c0;
-        }
-
-        .nav div.media_button button.main_media_button:hover span:nth-of-type(3) {
-            transform: rotateY(180deg);
-            transition: all 0.3s;
-            background-color: #c0c0c0;
-        }
-
-        .nav div.media_button button.active span:nth-of-type(1) {
-            transform: rotate3d(0, 0, 1, 45deg);
-            position: absolute;
-            margin: 0;
-        }
-
-        .nav div.media_button button.active span:nth-of-type(2) {
-            display: none;
-        }
-
-        .nav div.media_button button.active span:nth-of-type(3) {
-            transform: rotate3d(0, 0, 1, -45deg);
-            position: absolute;
-            margin: 0;
-        }
-
-        .nav div.media_button button.active:hover span:nth-of-type(1) {
-            transform: rotate3d(0, 0, 1, 20deg);
-        }
-
-        .nav div.media_button button.active:hover span:nth-of-type(3) {
-            transform: rotate3d(0, 0, 1, -20deg);
+        form button:hover {
+            color: #fff;
+            background-color: rgb(2, 48, 134);
         }
 
         section {
@@ -186,12 +128,11 @@
                         <li><a href="{{ route('schedule.index') }} ">schedule</a></li>
                     </ul>
                 </div>
-                <div class="media_button">
-                    <button class="main_media_button" id="mediaButton">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
+                <div>
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit">Logout</button>
+                    </form>
                 </div>
             </div>
         </nav>

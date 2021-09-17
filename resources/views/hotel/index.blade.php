@@ -7,9 +7,9 @@
             <h1>List of Hotels</h1>
             <table>
                 <tr>
-                <tr>Hotel Id</tr>
-                <th>Name</th>
-                <th>Modify</th>
+                    <td>Hotel Id</td>
+                    <th>Name</th>
+                    <th>Modify</th>
                 </tr>
                 @foreach ($hotels as $hotel)
                     <tr>
