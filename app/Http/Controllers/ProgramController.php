@@ -68,7 +68,7 @@ class ProgramController extends Controller
     public function edit($id)
     {
         $program = Program::find($id);
-        return view(route('program.edit', $program));
+        return view('program.edit', ['program' => $program]);
     }
 
     /**
@@ -101,5 +101,6 @@ class ProgramController extends Controller
     public function destroy($id)
     {
         Program::destroy($id);
+        redirect(route('program.index'));
     }
 }
