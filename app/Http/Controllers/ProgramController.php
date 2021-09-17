@@ -14,8 +14,8 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        $program = Program::all();
-        return view('program.index', ['program' => $program]);
+        $programs = Program::all();
+        return view('program.index', ['programs' => $programs]);
     }
 
     /**
@@ -42,6 +42,7 @@ class ProgramController extends Controller
 
         Program::create([
             'p_name' => $request->p_name,
+            'p_costs' => $request->p_costs,
         ]);
 
         return redirect('program.index');
@@ -66,7 +67,8 @@ class ProgramController extends Controller
      */
     public function edit($id)
     {
-        return view(route('program.edit', $id));
+        $program = Program::find($id);
+        return view(route('program.edit', $program));
     }
 
     /**
@@ -82,9 +84,10 @@ class ProgramController extends Controller
             'p_name' => 'required|unique:programs,p_name' . $id,
         ]);
 
-        Program::create([
-            'p_name' => $request->p_name,
-        ]);
+        $program = Program::find($id);
+        $program->p_name = $request->p_name;
+        $program->p_costs = $request->p_costs;
+        $program->save;
 
         return redirect('program.index');
     }
@@ -97,6 +100,6 @@ class ProgramController extends Controller
      */
     public function destroy($id)
     {
-        Hotel::destroy($id);
+        Program::destroy($id);
     }
 }
