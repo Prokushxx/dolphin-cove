@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProgramsTable extends Migration
+class CreateScheduleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateProgramsTable extends Migration
      */
     public function up()
     {
-        Schema::create('programs', function (Blueprint $table) {
-            $table->id('p_id');
-            $table->string('p_name')->unique();
-            $table->integer('p_costs');
+        Schema::create('schedule', function (Blueprint $table) {
+            $table->id('schedule_id');
+            $table->foreignId('program_id')->constrained('programs',"p_id");
+            $table->date('exc_date');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateProgramsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('programs');
+        Schema::dropIfExists('schedule');
     }
 }
