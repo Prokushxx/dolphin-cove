@@ -33,3 +33,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('schedule', ScheduleController::class);
     Route::resource('booking', BookingController::class);
 });
+
+
+
