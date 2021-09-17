@@ -6,7 +6,7 @@
   <title>Document</title>
 </head>
 <body>
-  <form action="" method="post">
+  <form action="{{route(reservation.store)}}" method="post">
     @csrf
     <table>
       <th>Enter Company Information</th>

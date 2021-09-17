@@ -6,19 +6,23 @@
   <title>Reservation</title>
 </head>
 <body>
-  <form action="{{route()}}">
-    <button type="submit">Add Company</button>
-    <table>
-      @csrf
-        <th>
-          Company Name
-        </th>
+  <table>
+      <th>
+        Company Name
+      </th>
       @foreach ($reservations as $reservation )
        <tr>
-         <td>{{ $reservation->company_name }}</td>
+         <td>{{$reservation->company_name}}</td>
+         <a href="{{ route('reservation.edit', $reservation->company_id) }}">edit</a>
+                <form class="" action=" {{route('reservation.destroy', $reservation->company_id)}}" method="post"
+                     onsubmit="return confirm('Are you sure you want to delete {{$reservation->company_name}} company?');">
+                    @csrf
+                    @method('DELETE')
+                    <button class="">
+                    Delete
+                   </button>
        </tr>
       @endforeach
     </table>
-  </form>
 </body>
 </html>

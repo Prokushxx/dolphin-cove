@@ -11,7 +11,11 @@
                 <input type="hidden" name="hotel_id">
             </div>
             <div>
-                <input type="text" name="hotel_name">
+                <select name="hotel_id">
+                    @foreach ($hotels as $hotel)
+                        <option value="{{ $hotel->hotel_id }}">{{ $hotel->hotel_name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div>
                 <input type="submit" value="Update">
