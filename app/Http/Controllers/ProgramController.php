@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Program;
 use Illuminate\Http\Request;
 
 class ProgramController extends Controller
@@ -13,7 +14,8 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        //
+        $program = Program::all();
+        return view('program.index', ['program' => $program]);
     }
 
     /**
@@ -23,7 +25,7 @@ class ProgramController extends Controller
      */
     public function create()
     {
-        //
+        return view('program.create');
     }
 
     /**
@@ -34,7 +36,15 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'p_name' => 'required|unique:programs,p_name'
+        ]);
+
+        Program::create([
+            'p_name' => $request->p_name,
+        ]);
+
+        return redirect('program.index');
     }
 
     /**
@@ -45,7 +55,7 @@ class ProgramController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('program.show');
     }
 
     /**
@@ -56,7 +66,7 @@ class ProgramController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view(route('program.edit', $id));
     }
 
     /**
@@ -68,7 +78,15 @@ class ProgramController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'p_name' => 'required|unique:programs,p_name' . $id,
+        ]);
+
+        Program::create([
+            'p_name' => $request->p_name,
+        ]);
+
+        return redirect('program.index');
     }
 
     /**
@@ -79,6 +97,6 @@ class ProgramController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Hotel::destroy($id);
     }
 }

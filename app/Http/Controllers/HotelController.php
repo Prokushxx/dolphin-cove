@@ -14,7 +14,8 @@ class HotelController extends Controller
      */
     public function index()
     {
-        return view('hotel.index');
+        $hotels = Hotel::all();
+        return view('hotel.index', ['hotels' => $hotels]);
     }
 
     /**
@@ -35,10 +36,15 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'hotel_name' => 'required|unique:hotels,hotel_name'
+        ]);
 
         Hotel::create([
             'hotel_name' => $request->hotel_name,
         ]);
+
+        return redirect('hotel.index');
     }
 
     /**
@@ -60,7 +66,7 @@ class HotelController extends Controller
      */
     public function edit($id)
     {
-        return view('hotel.edit');
+        return view(route('hotel.edit', $id));
     }
 
     /**
@@ -72,7 +78,15 @@ class HotelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'hotel_name' => 'required|unique:hotels, hotel_name' . $id,
+        ]);
+
+        Hotel::create([
+            'hotel_name' => $request->hotel_name,
+        ]);
+
+        return redirect('hotel.index');
     }
 
     /**
@@ -83,6 +97,6 @@ class HotelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Hotel::destroy($id);
     }
 }
