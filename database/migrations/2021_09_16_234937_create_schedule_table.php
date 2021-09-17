@@ -13,7 +13,7 @@ class CreateScheduleTable extends Migration
      */
     public function up()
     {
-        Schema::create('schedule', function (Blueprint $table) {
+        Schema::create('schedules', function (Blueprint $table) {
             $table->id('schedule_id');
             $table->foreignId('program_id')->constrained('programs',"p_id");
             $table->date('exc_date');

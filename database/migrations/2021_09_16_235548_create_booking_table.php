@@ -13,7 +13,7 @@ class CreateBookingTable extends Migration
      */
     public function up()
     {
-        Schema::create('booking', function (Blueprint $table) {
+        Schema::create('bookings', function (Blueprint $table) {
             $table->id('booking_id');
             $table->foreignId('user_id')->constrained('users','user_id');
             $table->foreignId('company_id')->constrained('reservation','company_id');
