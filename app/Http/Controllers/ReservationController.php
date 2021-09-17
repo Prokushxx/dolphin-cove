@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -13,7 +14,8 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        //
+        $reservations = Reservation::all();
+        return view('reservation.index', ['reservations' => $reservations]);
     }
 
     /**
@@ -23,7 +25,7 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        //
+        return view('hotel.create');
     }
 
     /**
@@ -34,7 +36,15 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'company_name' => 'required|unique:reservations,company_name'
+        ]);
+
+        Reservation::create([
+            'company_name' => $request->company_name
+        ]);
+
+        return redirect('reservation.index');
     }
 
     /**
@@ -45,7 +55,7 @@ class ReservationController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('reservation.index');
     }
 
     /**
@@ -56,7 +66,7 @@ class ReservationController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view(route('hotel.edit', $id));
     }
 
     /**
@@ -68,7 +78,15 @@ class ReservationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'company_name' => 'required|unique:reservations,company_name' . $id,
+        ]);
+
+        Reservation::create([
+            'comapany_name' => $request->company_name
+        ]);
+
+        return redirect('reservation.index');
     }
 
     /**
@@ -79,6 +97,6 @@ class ReservationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Reservation::destroy($id);
     }
 }
