@@ -13,6 +13,7 @@
         <h1>List of Hotels</h1>
         <table>
             <tr>
+                <tr>Hotel Id</tr>
                 <th>Name</th>
                 <th>Modify</th>
             </tr>
