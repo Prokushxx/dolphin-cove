@@ -1,29 +1,29 @@
-@extends('layouts.app')
+@extends('layouts.navbar')
 
 @section('content')
 
-<H1>LIST OF BOOKINGS</H1>
+    <H1>LIST OF BOOKINGS</H1>
 
-<table>
-  <tr>
-    
-    <th>EMAIL</th>
-    <th>BOOKING DATE</th>
-    <th>HOTEL</th>
-    <th>PROGRAM</th>
-    <th>PAYMENT METHOD</th>
-  
-  </tr>
-  @foreach ($booking as $data)
-  <tr>
-  <td>{{ $data->email }}</td>  
-  <td>{{ $data->current_date }}</td>  
-  <td>{{ $data->hotel_name }}</td>  
-  <td>{{ $data->p_name }}</td>  
-  <td>{{ $data->payment_method }}</td>  
-  </tr>  
+    <table>
+        <tr>
 
-  @endforeach
-</table>
+            <th>EMAIL</th>
+            <th>BOOKING DATE</th>
+            <th>HOTEL</th>
+            <th>PROGRAM</th>
+            <th>PAYMENT METHOD</th>
+
+        </tr>
+        @foreach ($bookings as $booking)
+            <tr>
+                <td>{{ $booking->email }}</td>
+                <td>{{ $booking->current_date }}</td>
+                <td>{{ $booking->hotel_name }}</td>
+                <td>{{ $booking->p_name }}</td>
+                <td>{{ $booking->payment_method }}</td>
+            </tr>
+
+        @endforeach
+    </table>
 
 @endsection

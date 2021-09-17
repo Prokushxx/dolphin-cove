@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
 
-        body{
+        body {
             background: white;
 
         }
 
-        .container{
+        .container {
             margin-left: 5%;
             margin-right: 5%;
         }
@@ -25,13 +25,13 @@
         /* Navbar section */
 
 
-        .navbar{
+        .navbar {
             /* margin-top: -20px; */
             /* margin-bottom: 20px; */
             /* background-color: black; */
         }
 
-        .nav{
+        .nav {
             width: 100%;
             height: 65px;
             position: fixed;
@@ -41,13 +41,13 @@
             background-color: rgb(37, 86, 179);
         }
 
-        .nav div.logo{
+        .nav div.logo {
             width: 180px;
             height: 10px;
             position: absolute;
         }
 
-        .nav div.logo a{
+        .nav div.logo a {
             text-decoration: none;
             color: #fff;
             font-size: 1.8em;
@@ -58,32 +58,32 @@
             color: #c0c0c0;
         }
 
-        .nav div.main_list{
+        .nav div.main_list {
             width: 600px;
             height: 65px;
             float: right;
         }
 
-        .nav div.main_list ul{
-            width:100%;
+        .nav div.main_list ul {
+            width: 100%;
             height: 65px;
             display: flex;
             list-style: none;
         }
 
-        .nav div.main_list ul li{
+        .nav div.main_list ul li {
             width: 120px;
             height: 65px;
         }
 
-        .nav div.main_list ul li a{
+        .nav div.main_list ul li a {
             text-decoration: none;
             color: #fff;
             line-height: 65px;
             text-transform: uppercase;
         }
 
-        .nav div.main_list ul li a:hover{
+        .nav div.main_list ul li a:hover {
             color: #c0c0c0;
         }
 
@@ -100,13 +100,14 @@
         .nav div.media_button button.main_media_button {
             width: 100%;
             height: 100%;
-            background-color: transparent;;
+            background-color: transparent;
+            ;
             outline: 0;
             border: none;
             cursor: pointer;
         }
 
-        .nav div.media_button button.main_media_button span{
+        .nav div.media_button button.main_media_button span {
             width: 98%;
             height: 1px;
             display: block;
@@ -115,19 +116,19 @@
             margin-bottom: 10px;
         }
 
-        .nav div.media_button button.main_media_button:hover span:nth-of-type(1){
+        .nav div.media_button button.main_media_button:hover span:nth-of-type(1) {
             transform: rotateY(180deg);
             transition: all 0.5s;
             background-color: #c0c0c0;
         }
 
-        .nav div.media_button button.main_media_button:hover span:nth-of-type(2){
+        .nav div.media_button button.main_media_button:hover span:nth-of-type(2) {
             transform: rotateY(180deg);
             transition: all 0.4s;
             background-color: #c0c0c0;
         }
 
-        .nav div.media_button button.main_media_button:hover span:nth-of-type(3){
+        .nav div.media_button button.main_media_button:hover span:nth-of-type(3) {
             transform: rotateY(180deg);
             transition: all 0.3s;
             background-color: #c0c0c0;
@@ -157,16 +158,17 @@
             transform: rotate3d(0, 0, 1, -20deg);
         }
 
-        section
-        {
+        section {
             display: flex;
             align-items: center;
-            justify-content: center; 
+            justify-content: center;
             width: 100%;
             height: calc(100vh - 70px);
         }
+
     </style>
 </head>
+
 <body>
     <div class="navbar">
         <nav class="nav">
@@ -200,4 +202,5 @@
 
     </section>
 </body>
+
 </html>

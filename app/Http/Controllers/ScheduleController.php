@@ -37,14 +37,14 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-                    'schedule_name' => 'required|unique:schedule,schedule_name'
-                ]);
+            'schedule_name' => 'required|unique:schedule,schedule_name'
+        ]);
 
-                Schedule::create([
-                    'schedule_name' => $request->schedule_name,
-                ]);
+        Schedule::create([
+            'schedule_name' => $request->schedule_name,
+        ]);
 
-                return redirect('schedule.index');
+        return redirect('schedule.index');
     }
 
     /**
@@ -80,14 +80,13 @@ class ScheduleController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-                    'schedule_name' => 'required|unique:schedule, schedule_name' . $id,
-                ]);
+            'schedule_name' => 'required|unique:schedule, schedule_name,' . $id,
+        ]);
 
-               Schedule::create([
-                    'schedule_name' => $request->schedule_name,
-                ]);
+        $schedule = Schedule::find($id);
+        $schedule->schedule_name = $request->schedule_name;
 
-                return redirect('schedule.index');
+        return redirect('schedule.index');
     }
 
     /**
