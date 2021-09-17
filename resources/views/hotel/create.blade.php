@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +13,7 @@
 <body>
     <div>
         <h1>Enter Hotel Name</h1>
-        <form action="hotel" method="post">
+        <form action="{{ route('hotel.create') }}" method="post">
             @csrf
             <div>
                 <input type="text" name="hotel_name">
@@ -21,3 +25,5 @@
     </div>
 </body>
 </html>
+
+@endsection
