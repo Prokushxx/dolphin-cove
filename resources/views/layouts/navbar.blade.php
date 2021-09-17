@@ -24,13 +24,6 @@
 
         /* Navbar section */
 
-
-        .navbar {
-            /* margin-top: -20px; */
-            /* margin-bottom: 20px; */
-            /* background-color: black; */
-        }
-
         .nav {
             width: 100%;
             height: 65px;
@@ -93,11 +86,13 @@
             border: none;
             outline: none;
             border-radius: 6px;
+            transition: 0.5s all;
         }
 
         form button:hover {
             color: #fff;
             background-color: rgb(2, 48, 134);
+            cursor: pointer;
         }
 
         section {
@@ -122,7 +117,7 @@
                     <ul>
                         <li><a href="{{ route('booking.index') }} ">booking</a></li>
                         <li><a href="{{ route('hotel.index') }} ">hotel</a></li>
-                        <li><a href="#">payment</a></li>
+                        <li><a href="{{ route('reservation.index') }} ">payment</a></li>
                         <li><a href="{{ route('program.index') }} ">program</a></li>
                         <li><a href="{{ route('reservation.index') }} ">reservation</a></li>
                         <li><a href="{{ route('schedule.index') }} ">schedule</a></li>
