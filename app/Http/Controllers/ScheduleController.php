@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
@@ -13,7 +14,8 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        //
+        $Schedule = Schedule::all();
+        return view('Schedule.index', ['Schedule' => $Schedule]);
     }
 
     /**
@@ -23,7 +25,7 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        //
+        return view('Schedule.create');
     }
 
     /**
@@ -34,7 +36,15 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+                    'Schedule_name' => 'required|unique:Schedule,Schedule_name'
+                ]);
+
+                Schedule::create([
+                    'Schedule_name' => $request->Schedule_name,
+                ]);
+
+                return redirect('Schedule.index');
     }
 
     /**
@@ -45,7 +55,7 @@ class ScheduleController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('Schedule.show');
     }
 
     /**
@@ -56,7 +66,8 @@ class ScheduleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Schedule = Schedule::find($id);
+        return view(route('Schedule.edit', $Schedule));
     }
 
     /**
@@ -68,7 +79,15 @@ class ScheduleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+                    'Schedule_name' => 'required|unique:Schedule, Schedule_name' . $id,
+                ]);
+
+               Schedule::create([
+                    'Schedule_name' => $request->Schedule_name,
+                ]);
+
+                return redirect('Schedule.index');
     }
 
     /**
@@ -79,6 +98,6 @@ class ScheduleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Schedule::destroy($id);
     }
 }
