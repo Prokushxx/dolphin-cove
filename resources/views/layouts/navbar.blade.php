@@ -87,11 +87,13 @@
             border: none;
             outline: none;
             border-radius: 6px;
+            transition: 0.5s all;
         }
         form button:hover
         {
             color: #fff;
             background-color: rgb(2, 48, 134);
+            cursor: pointer;
         }
 
         section
