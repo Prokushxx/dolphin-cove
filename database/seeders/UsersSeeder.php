@@ -18,6 +18,11 @@ class UsersSeeder extends Seeder
             'email'=>'bob@gmail.com',
             'password'=>'password1'
         ],
+        [
+            'name'=>'test one',
+            'email'=>'tes1@gmail.com',
+            'password'=>'password1'
+        ],
     ];
 
 
