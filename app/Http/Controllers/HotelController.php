@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hotel;
+use App\Models\Patron;
 use Illuminate\Http\Request;
 
 class HotelController extends Controller
@@ -62,9 +63,14 @@ class HotelController extends Controller
      */
     public function show($id)
     {
-        $showPatron = Hotel::join('hotels', 'hotels.hotel_id', '=', 'patrons.patron_id')
-                        ->get(['patrons.*', 'hotels.hotel_id']);
-        return view('hotel.show.{$id}', ['showPatron' => $showPatron]);
+        $showPatron = Hotel::find($id)
+                    ->where('patron_id', '=', $id)
+                    // ->pluck('patron_id')
+                    ->join('hotels', 'hotel.hotel_id', '=', 'patron.patron_id')
+                    ->select(['patrons.*', 'hotels.hotel_id']);
+        
+        // dd($showPatron);
+        return view('hotel.show', ['showPatron' => $showPatron]);
     }
 
     /**

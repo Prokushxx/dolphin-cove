@@ -19,13 +19,13 @@
             @foreach ($showPatron as $patron)
             <tbody>
                 <tr>
-                    <td>{{ $patron->patron_id }}</td>
-                    <td>{{ $patron->f_name }}</td>
-                    <td>{{ $patron->l_name }}</td>
-                    <td>{{ $patron->email }}</td>
-                    <td>{{ $patron->created_at }}</td>
-                    <td>{{ $patron->updated_at }}</td>
-                    <td>{{ $patron->hotel_id }}</td>
+                    <td>{{ $patron['patron_id'] }}</td>
+                    <td>{{ $patron['f_name'] }}</td>
+                    <td>{{ $patron['l_name'] }}</td>
+                    <td>{{ $patron['email'] }}</td>
+                    <td>{{ $patron['created_at'] }}</td>
+                    <td>{{ $patron['updated_at'] }}</td>
+                    <td>{{ $patron['hotel_id'] }}</td>
                 </tr>
             </tbody>
             @endforeach
