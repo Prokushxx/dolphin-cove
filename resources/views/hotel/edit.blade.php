@@ -5,14 +5,14 @@
     <main>
         <div>
             <h1>Edit Hotel</h1>
-            <form action="{{ route('hotel.update', $hotel->hotel_id) }}" method="post">
+            <form action="{{ route('hotel.update', $hotels->hotel_id) }}" method="post">
                 @csrf
-                @method('put')
+                @method('PUT')
                 <div>
                     <input type="hidden" name="hotel_id">
                 </div>
                 <div>
-                    <input type="text" name="hotel_name" value="{{ $hotel->hotel_name }}" id="">
+                    <input type="text" value="{{ $hotels->hotel_name }}" name="hotel_name" required>
                 </div>
                 <div>
                     <input type="submit" value="Update">

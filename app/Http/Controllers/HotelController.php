@@ -36,15 +36,22 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'hotel_name' => 'required|unique:hotels,hotel_name'
+        $val = $request->validate([
+            'hotel_name' => 'unique:hotels,hotel_name'
+        ], [
+            'unique' => '*This hotel already exists'
         ]);
 
         Hotel::create([
             'hotel_name' => $request->hotel_name,
         ]);
 
-        return redirect(route('hotel.index'));
+        if ($val) {
+            $hotels = Hotel::all();
+            return view('hotel.index', ['hotels' => $hotels]);
+        } else {
+            return back()->withErrors($val);
+        }
     }
 
     /**
