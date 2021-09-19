@@ -15,18 +15,19 @@ class UsersSeeder extends Seeder
     protected $user = [
         [
             'name' => 'bob',
-            'email' => 'bob@gmail.com',
-            'password' => 'password1'
+            'email' => 'bob@email.com',
+            'password' =>
+            '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ],
         [
             'name' => 'admin',
             'email' => 'admin@email.com',
-            'password' => 'password'
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ],
         [
             'name' => 'user',
             'email' => 'user@email.com',
-            'password' => 'password'
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password'
         ],
         [
             'name'=>'test one',
