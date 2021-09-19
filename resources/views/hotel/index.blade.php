@@ -4,6 +4,7 @@
 
     <main>
         <div>
+            <a href="{{ route('hotel.create') }}">Create Hotel</a>
             <h1>List of Hotels</h1>
             <table>
                 <tr>
