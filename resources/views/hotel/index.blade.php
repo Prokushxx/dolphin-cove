@@ -15,7 +15,7 @@
                     <tr>
                         <td>{{ $hotel->hotel_name }}</td>
                         <td>
-                            <a href="{{ route('hotel.edit', $hotel->hotel_id) }}">edit</a>
+                            <a href="{{ route('hotel.edit', $hotel->hotel_id) }}">Edit</a>
                             <form class="" action=" {{ route('hotel.destroy', $hotel->hotel_id) }}" method="post"
                                 onsubmit="return confirm('Are you sure you want to delete {{ $hotel->hotel_name }} hotel?');">
                                 @csrf
