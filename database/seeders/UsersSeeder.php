@@ -22,17 +22,17 @@ class UsersSeeder extends Seeder
         [
             'name' => 'admin',
             'email' => 'admin@email.com',
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' // password
         ],
         [
             'name' => 'user',
             'email' => 'user@email.com',
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password'
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' // password'
         ],
         [
-            'name'=>'test one',
-            'email'=>'test1@gmail.com',
-            'password'=>'password'
+            'name' => 'test one',
+            'email' => 'test1@gmail.com',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' //password
         ],
     ];
 
