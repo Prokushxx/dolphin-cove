@@ -7,97 +7,108 @@ use Illuminate\Http\Request;
 
 class HotelController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $hotels = Hotel::all();
-        return view('hotel.index', ['hotels' => $hotels]);
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function index()
+  {
+    $hotels = Hotel::all();
+    return view('hotel.index', ['hotels' => $hotels]);
+  }
+
+  /**
+   * Show the form for creating a new resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function create()
+  {
+    return view('hotel.create');
+  }
+
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @return \Illuminate\Http\Response
+   */
+  public function store(Request $request)
+  {
+    $val = $request->validate([
+      'hotel_name' => 'unique:hotels,hotel_name'
+    ], [
+      'unique' => '*This hotel already exists'
+    ]);
+
+    Hotel::create([
+      'hotel_name' => $request->hotel_name,
+    ]);
+
+    if ($val) {
+      $hotels = Hotel::all();
+      return view('hotel.index', ['hotels' => $hotels]);
+    } else {
+      return back()->withErrors($val);
     }
+  }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('hotel.create');
-    }
+  /**
+   * Display the specified resource.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function show($id)
+  {
+    return view('hotel.show');
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'hotel_name' => 'required|unique:hotels,hotel_name'
-        ]);
+  /**
+   * Show the form for editing the specified resource.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function edit($id)
+  {
+    $hotels = Hotel::find($id);
+    return view('hotel.edit',['hotels'=> $hotels]);
+  }
 
-        Hotel::create([
-            'hotel_name' => $request->hotel_name,
-        ]);
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function update(Request $request, $id)
+  {
+    $val = $request->validate([
+      'hotel_name' => 'unique:hotels, hotel_name,' . $id,
+    ]);
 
-        return redirect('hotel.index');
-    }
+ 
+    $hotel = Hotel::find($id);
+    $hotel->hotel_name = $request->hotel_name;
+    $hotel->save();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return view('hotel.show');
-    }
+    $hotels = Hotel::all();
+    return view('hotel.index', ['hotels' => $hotels]);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $hotel = Hotel::find($id);
-        return view(route('hotel.edit', $hotel));
-    }
+    
+  }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'hotel_name' => 'required|unique:hotels, hotel_name,' . $id,
-        ]);
-
-        $hotel = Hotel::find($id);
-        $hotel->hotel_name = $request->hotel_name;
-        $hotel->save;
-
-        return redirect('hotel.index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        Hotel::destroy($id);
-    }
+  /**
+   * Remove the specified resource from storage.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function destroy($id)
+  {
+    Hotel::destroy($id);
+  }
 }
