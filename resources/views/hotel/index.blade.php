@@ -13,7 +13,7 @@
                 </tr>
                 @foreach ($hotels as $hotel)
                     <tr>
-                        <td>{{ $hotels->hotel_name }}</td>
+                        <td>{{ $hotel->hotel_name }}</td>
                         <td>
                             <a href="{{ route('hotel.edit', $hotel->hotel_id) }}">Edit</a>
                             <form class="" action=" {{ route('hotel.destroy', $hotel->hotel_id) }}" method="post"

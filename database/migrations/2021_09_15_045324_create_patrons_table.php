@@ -14,7 +14,7 @@ class CreatePatronsTable extends Migration
     public function up()
     {
         Schema::create('patrons', function (Blueprint $table) {
-            $table->id('user_id');
+            $table->id('patron_id');
             $table->string('f_name');
             $table->string('l_name');
             $table->string('email')->unique();

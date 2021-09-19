@@ -12,19 +12,28 @@ class UsersSeeder extends Seeder
      *
      * @return void
      */
-    protected $user =[
+    protected $user = [
         [
-            'name'=>'bob',
-            'email'=>'bob@gmail.com',
-            'password'=>'password1'
+            'name' => 'bob',
+            'email' => 'bob@gmail.com',
+            'password' => 'password1'
+        ],
+        [
+            'name' => 'admin',
+            'email' => 'admin@email.com',
+            'password' => 'password'
+        ],
+        [
+            'name' => 'user',
+            'email' => 'user@email.com',
+            'password' => 'password'
         ],
     ];
 
 
     public function run()
     {
-        foreach ($this->user as $user)
-        {
+        foreach ($this->user as $user) {
             user::create($user);
         }
     }
