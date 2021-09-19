@@ -14,7 +14,7 @@
             @foreach ($hotels as $hotel)
             <tbody>
                 <tr>
-                    <td>{{ $hotel->hotel_name }}</td>
+                    <td><a href="{{ route('hotel.show', $hotel->hotel_id) }}">{{ $hotel->hotel_name }}</a></td>
                     <td>
                         <a href="{{ route('hotel.edit', $hotel->hotel_id) }}">Edit</a>
                         <form class="" action=" {{ route('hotel.destroy', $hotel->hotel_id) }}" method="post"

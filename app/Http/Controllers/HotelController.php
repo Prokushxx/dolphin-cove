@@ -62,7 +62,9 @@ class HotelController extends Controller
      */
     public function show($id)
     {
-        return view('hotel.show');
+        $showPatron = Hotel::join('hotels', 'hotels.hotel_id', '=', 'patrons.patron_id')
+                        ->get(['patrons.*', 'hotels.hotel_id']);
+        return view('hotel.show.{$id}', ['showPatron' => $showPatron]);
     }
 
     /**
