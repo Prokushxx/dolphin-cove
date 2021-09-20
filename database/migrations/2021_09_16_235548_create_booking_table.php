@@ -22,6 +22,7 @@ class CreateBookingTable extends Migration
             $table->string('status');
             $table->string('payment_method');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

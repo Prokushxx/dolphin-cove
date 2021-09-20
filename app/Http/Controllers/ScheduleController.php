@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Schedule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ScheduleController extends Controller
 {
@@ -14,8 +15,11 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $schedule = Schedule::all();
-        return view('schedule.index', ['schedule' => $schedule]);
+        $schedules = DB::table('schedules')
+            ->join('programs', 'schedules.program_id', '=', 'programs.p_id')
+            ->get();
+        ddd($schedules);
+        return view('schedule.index', ['schedules' => $schedules]);
     }
 
     /**
@@ -79,9 +83,6 @@ class ScheduleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'schedule_name' => 'required|unique:schedule, schedule_name,' . $id,
-        ]);
 
         $schedule = Schedule::find($id);
         $schedule->schedule_name = $request->schedule_name;

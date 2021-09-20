@@ -17,6 +17,7 @@ class CreateHotelsTable extends Migration
             $table->id('hotel_id');
             $table->string('hotel_name')->unique();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
