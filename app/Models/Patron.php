@@ -10,8 +10,6 @@ class Patron extends Model
     use HasFactory;
     protected $primaryKey = "patron_id";
 
-    // protected $table = 'patrons';
-
     protected $fillable = [
         'f_name',
         'l_name',
