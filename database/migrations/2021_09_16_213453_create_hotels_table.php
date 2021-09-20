@@ -15,9 +15,10 @@ class CreateHotelsTable extends Migration
     {
         Schema::create('hotels', function (Blueprint $table) {
             $table->id('hotel_id');
-            $table->string('hotel_name')->unique();
+            // $table->string('hotel_name')->unique();
+            $table->string('hotel_name')->unique()->onDelete('cascade');
             $table->timestamps();
-            $table->softDeletes();
+            // $table->softDeletes();
         });
     }
 
