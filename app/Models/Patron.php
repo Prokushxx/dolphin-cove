@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Patron extends Model
 {
     use HasFactory;
-    protected $primaryKey = "user_id";
+    protected $primaryKey = "patron_id";
 
     protected $fillable = [
         'f_name',

@@ -12,7 +12,7 @@ class Booking extends Model
     protected $primaryKey = 'booking_id';
 
     protected $fillable = [
-        'user_id',
+        'patron_id',
         'company_id',
         'hotel_id',
         'schedule_id',
