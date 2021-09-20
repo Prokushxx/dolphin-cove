@@ -116,7 +116,7 @@ class BookingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validated = $request->validate([
+        $request->validate([
             'patron_id' => 'required',
             'company_id' => 'required',
             'hotel_id' => 'required',
@@ -127,7 +127,6 @@ class BookingController extends Controller
 
         $booking = Booking::find($id);
 
-        // $booking->booking_id = $request->booking_id;
         $booking->patron_id = $request->patron_id;
         $booking->company_id = $request->company_id;
         $booking->hotel_id = $request->hotel_id;

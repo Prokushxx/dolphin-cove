@@ -26,4 +26,9 @@ class Schedule extends Model
   {
     $this->attributes['exc_date'] = date_create($value);
   }
+
+  public function getExcDateAttribute($value)
+  {
+    $this->attributes['exc_date'] = date_format($value, 'jS F Y');
+  }
 }
