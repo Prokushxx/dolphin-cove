@@ -29,8 +29,6 @@
             @endforeach
         </table>
 
-        {{ $hotels->links() }}
-
     </main>
 
 @endsection

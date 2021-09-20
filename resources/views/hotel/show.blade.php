@@ -16,7 +16,7 @@
                     <th>Hotel ID</th>
                 </tr>
             </thead>
-            @foreach ($showPatron as $patron)
+            @foreach ($hotels as $patron)
             <tbody>
                 <tr>
                     <td>{{ $patron['patron_id'] }}</td>

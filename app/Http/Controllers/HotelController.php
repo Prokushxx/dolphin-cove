@@ -63,14 +63,14 @@ class HotelController extends Controller
      */
     public function show($id)
     {
-        $showPatron = Hotel::find($id)
+        $hotels = Hotel::find($id)
                     ->where('patron_id', '=', $id)
                     // ->pluck('patron_id')
                     ->join('hotels', 'hotel.hotel_id', '=', 'patron.patron_id')
                     ->select(['patrons.*', 'hotels.hotel_id']);
         
         // dd($showPatron);
-        return view('hotel.show', ['showPatron' => $showPatron]);
+        return view('hotel.show', ['hotels' => $hotels]);
     }
 
     /**
@@ -113,7 +113,8 @@ class HotelController extends Controller
      */
     public function destroy($id)
     {
-        Hotel::destroy($id);
+        $hotels = Hotel::where('hotel_id', $id);
+        $hotels->delete();
         return redirect(route('hotel.index'));
     }
 }
