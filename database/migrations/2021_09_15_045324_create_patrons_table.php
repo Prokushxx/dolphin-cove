@@ -19,6 +19,7 @@ class CreatePatronsTable extends Migration
             $table->string('l_name');
             $table->string('email')->unique();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

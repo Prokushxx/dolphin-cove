@@ -18,6 +18,7 @@ class CreateProgramsTable extends Migration
             $table->string('p_name')->unique();
             $table->integer('p_costs');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

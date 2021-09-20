@@ -17,6 +17,7 @@ class CreateReservationsTable extends Migration
             $table->id('company_id');
             $table->string('company_name')->unique();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

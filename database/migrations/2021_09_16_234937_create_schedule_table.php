@@ -18,6 +18,7 @@ class CreateScheduleTable extends Migration
             $table->foreignId('program_id')->constrained('programs',"p_id");
             $table->date('exc_date');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

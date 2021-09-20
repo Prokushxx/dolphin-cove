@@ -19,6 +19,7 @@ class CreatePaymentTable extends Migration
             $table->foreignId('company_id')->constrained('reservations','company_id');
             $table->date('date_billed');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
