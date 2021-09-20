@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Program;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +19,7 @@ class ScheduleController extends Controller
         $schedules = DB::table('schedules')
             ->join('programs', 'schedules.program_id', '=', 'programs.p_id')
             ->get();
-        ddd($schedules);
+
         return view('schedule.index', ['schedules' => $schedules]);
     }
 
@@ -29,7 +30,8 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        return view('schedule.create');
+        $programs = Program::all();
+        return view('schedule.create', ['programs' => $programs]);
     }
 
     /**
@@ -40,15 +42,14 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'schedule_name' => 'required|unique:schedule,schedule_name'
+        $validated = $request->validate([
+            'program_id' => 'required',
+            'exc_date' => 'required'
         ]);
 
-        Schedule::create([
-            'schedule_name' => $request->schedule_name,
-        ]);
+        Schedule::create($validated);
 
-        return redirect('schedule.index');
+        return redirect('schedule.index')->with('message', 'Schedule created successfully');
     }
 
     /**
